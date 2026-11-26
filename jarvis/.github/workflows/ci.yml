@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: ${{ matrix.os }} / Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+
+      - name: System audio libraries (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libportaudio2 espeak-ng
+
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Syntax check
+        run: python -m compileall -q .
+
+      - name: Unit tests
+        run: python -m unittest discover -s tests -t . -v
+
+  fedora:
+    name: Fedora / Python 3
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Test inside Fedora container
+        run: |
+          docker run --rm \
+            -v "$GITHUB_WORKSPACE:/workspace" \
+            -w /workspace \
+            fedora:latest bash -lc '
+              dnf install -y python3 python3-pip python3-devel gcc portaudio-devel espeak-ng
+              python3 -m venv /tmp/jarvis-ci-venv
+              /tmp/jarvis-ci-venv/bin/python -m pip install --upgrade pip
+              /tmp/jarvis-ci-venv/bin/python -m pip install -r requirements.txt
+              /tmp/jarvis-ci-venv/bin/python -m compileall -q .
+              /tmp/jarvis-ci-venv/bin/python -m unittest discover -s tests -t . -v
+            '

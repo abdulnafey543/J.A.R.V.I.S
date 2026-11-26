@@ -1,0 +1,18 @@
+# Virtual environments (each OS builds its own with setup.py)
+.venv/
+venv/
+
+# Python junk
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Secrets - NEVER commit these
+credentials/*
+!credentials/.gitkeep
+client_secret*.json
+token*.json
+.env
+
+# Logs
+*.log
