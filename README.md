@@ -10,7 +10,7 @@ Talk to your assistant, ask about your inbox, keep track of coursework, and get 
 
 <br>
 
-![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Platforms](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-2ea44f?style=for-the-badge)
 ![AI](https://img.shields.io/badge/AI-Ollama%20%7C%20Local-7E57C2?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-orange?style=for-the-badge)
