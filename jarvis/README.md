@@ -71,8 +71,8 @@ Before installing, make sure you have:
 Download the repository from GitHub, or clone it:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
-cd YOUR_REPOSITORY
+git clone https://github.com/abdulnafey543/J.A.R.V.I.S.git
+
 ```
 
 Replace the URL with your repository's actual GitHub URL.
