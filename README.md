@@ -75,7 +75,6 @@ git clone https://github.com/abdulnafey543/J.A.R.V.I.S.git
 
 ```
 
-Replace the URL with your repository's actual GitHub URL.
 
 ### 2. Run the setup
 
