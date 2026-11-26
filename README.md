@@ -55,7 +55,7 @@ The automated test workflow covers Windows and Ubuntu runners, with an additiona
 
 Before installing, make sure you have:
 
-- Python **3.9 or newer** (Python 3.10+ is recommended)
+- (Python 3.10+ is recommended)
 - An internet connection for installation, Google services, and online speech recognition
 - [Ollama](https://ollama.com) for local AI conversations
 - A microphone for voice input (optional)
