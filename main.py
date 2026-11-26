@@ -54,7 +54,7 @@ def friendly_error(e):
 def _fetch(key, loader, max_age):
     """Return (data, error). Successful results are cached for max_age seconds."""
     hit = _cache.get(key)
-    if hit and time.monotonic() - hit[0] <= max_age:
+    if hit and time.monotonic() - hit[0] < max_age:
         return hit[1], None
     try:
         data = loader()
